@@ -1,0 +1,30 @@
+sudo -i (to enter root account)
+wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+yum install epel-release
+sudo amazon-linux-extras install epel -y
+amazon-linux-extras install java-openjdk11 -y
+yum install jenkins -y
+systemctl start jenkins
+systemctl enable jenkins
+systemctl status jenkins
+yum install firewall* -y
+systemctl start firewalld
+systemctl enable firewalld
+systemctl status firewalld
+firewall-cmd --zone=public --add-port=8080/tcp --permanent
+firewall-cmd --zone=public --add-service=http --permanent
+firewall-cmd --reload
+firewall-cmd --list-all
+
+Open browser-->type <publicip>:8080-->login with username and passwoard.
+
+copy /var/lib/jenkins/secrets/initialAdminPassword --->path
+in Linux--> #cat /var/lib/jenkins/secrets/initialAdminPassword
+XXXXXXXXXXXXXXXXXXXXXXX  <--- COPY this code and paste into jenkins browser.
+install plugins.
+
+
+
+
+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
